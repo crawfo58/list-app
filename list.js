@@ -9,11 +9,14 @@ const changeText = function(ev) {
     nameItem.textContent = `Name: ${name}`
 
     list.appendChild(nameItem)
+    array.push(name)
+    console.log(array)
 
     users.appendChild(list)
 
     form.reset()
-    form.userName.focus()
+    form.name.focus()
 }
+const array = []
 const form = document.querySelector('form#listForm')
 form.addEventListener('submit', changeText)
