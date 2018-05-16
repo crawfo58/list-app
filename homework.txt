@@ -1,0 +1,9 @@
+## Homework 3
+Create a brand-new app to create a list of something. For exaxmple: Tatum Tots, our favorite Channing Tatum movies.
+You should be able to type an item into a form and have it added to a list (a `ul`).
+### Bonus Credit
+In addition to building a list item and adding it to the DOM, also store each item in an array.
+### Super Mega Bonus Credit
+Add a _delete_ button to each list item that removes it from the list.
+### Super Mega Bonus Credit Hyper Fighting
+Remove the item from the array as well.
