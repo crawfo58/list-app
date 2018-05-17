@@ -7,3 +7,14 @@ In addition to building a list item and adding it to the DOM, also store each it
 Add a _delete_ button to each list item that removes it from the list.
 ### Super Mega Bonus Credit Hyper Fighting
 Remove the item from the array as well.
+
+## Homework 4
+* Make delete button work
+* Make fav button change the style of the list item in some way
+### Bonus Credit
+* Make the fav button also change the object in the array (fav property)
+### Super Mega Bonus Credit
+* Add buttons to move flick up and down the list
+* Make the buttons also change their place in the array
+### Super Mega Bonus Credit Hyper Fighting
+* Allow users to edit name of flicks in list after they're added (make span's content editable)
