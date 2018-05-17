@@ -1,5 +1,5 @@
 const app = {
-  init:function(selectors) {
+  init(selectors) {
     this.max = 0
     this.list = document.querySelector(selectors.listSelector)
 
@@ -11,13 +11,13 @@ const app = {
         })
   },
 
-  renderListItem: function(item) {
+  renderListItem(item) {
     const item2 = document.createElement('li')
     item2.textContent = item.name
     return item2
   }, 
 
-  handleSubmit: function(ev) {
+  handleSubmit(ev) {
     const f = ev.target
     const item = {
         id: ++this.max, 
