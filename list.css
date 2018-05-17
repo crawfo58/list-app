@@ -1,7 +1,13 @@
+main {
+    width: 80%;
+    background-color: whitesmoke;
+    margin: 1rem auto;
+}
 body {
     background-color: bisque;
     text-align: center;
 }
-/* ul {
-    display: inline-block;
-} */
+
+.itemName {
+    margin:0 0.75rem;
+}
