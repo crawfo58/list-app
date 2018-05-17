@@ -1,14 +1,21 @@
 const app = {
-  init:function(formSelector) {
+  init:function(selectors) {
     this.max = 0
+    this.list = document.querySelector(selectors.listSelector)
 
     document
-        .querySelector(formSelector)
+        .querySelector(selectors.formSelector)
         .addEventListener('submit', ev => {
             ev.preventDefault()
             this.handleSubmit(ev)
         })
   },
+
+  renderListItem: function(item) {
+    const item2 = document.createElement('li')
+    item2.textContent = item.name
+    return item2
+  }, 
 
   handleSubmit: function(ev) {
     const f = ev.target
@@ -16,10 +23,15 @@ const app = {
         id: ++this.max, 
         name: f.itemName.value,
     }
-    console.log(item)
+    
+    const item2 = this.renderListItem(item)
+    this.list.appendChild(item2)
     f.reset()
   },
 }
 
-app.init('#listForm')
+app.init({
+    formSelector: '#itemForm',
+    listSelector: '#itemList'
+})
 
