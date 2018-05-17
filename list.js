@@ -3,6 +3,7 @@ const app = {
     this.items = []
     this.max = 0
     this.list = document.querySelector(selectors.listSelector)
+    this.template = document.querySelector(selectors.templateSelector)
 
     document
         .querySelector(selectors.formSelector)
@@ -13,9 +14,12 @@ const app = {
   },
 
   renderListItem(item) {
-    const item2 = document.createElement('li')
+    const item2 = this.template.cloneNode(true)
+    item2.classList.remove('template')
     item2.dataset.id = item.id
-    item2.textContent = item.name
+    item2
+        .querySelector('.itemName')
+        .textContent = item.name
     return item2
   }, 
 
@@ -36,6 +40,7 @@ const app = {
 
 app.init({
     formSelector: '#itemForm',
-    listSelector: '#itemList'
+    listSelector: '#itemList',
+    templateSelector: '.item.template', 
 })
 
