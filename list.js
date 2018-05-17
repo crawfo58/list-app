@@ -14,6 +14,7 @@ const app = {
 
   renderListItem(item) {
     const item2 = document.createElement('li')
+    item2.dataset.id = item.id
     item2.textContent = item.name
     return item2
   }, 
