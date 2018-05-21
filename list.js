@@ -26,6 +26,12 @@ const app = {
               ev.preventDefault()
               this.removeListItem(ev)
           })
+      item2
+          .querySelector('button.warning.button')
+          .addEventListener('click', (ev)=> {
+              ev.preventDefault()
+              this.favoriteListItem(ev)
+          })
       return item2
     }, 
 
@@ -39,6 +45,17 @@ const app = {
             if(item2.dataset.id === index) {
                 this.items.splice(i,1)
                 break
+            }
+        }
+    },
+
+    favoriteListItem(ev) {
+        const button = ev.target
+        const item2 = button.parentNode.parentNode
+        item2.style.backgroundColor = 'Yellow'
+        for(i = 0; i < this.items.length; i++) {
+            if(this.items[i].id === item2.dataset.id) {
+                this.items[i].fav = true
             }
         }
     },
