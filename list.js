@@ -17,9 +17,11 @@ class App {
       const item2 = this.template.cloneNode(true)
       item2.classList.remove('template')
       item2.dataset.id = item.id
-      item2
-          .querySelector('.itemName')
-          .textContent = item.name
+
+      const nameSpan = item2.querySelector('.itemName')
+      nameSpan.textContent = item.name
+      nameSpan.addEventListener('keypress', this.saveOnEnter.bind(this, item))
+
       item2
           .querySelector('.remove.button')
           .addEventListener('click', this.removeItem.bind(this, item))
@@ -48,8 +50,8 @@ class App {
     }
 
     editItem(item, ev) {
-        const button = ev.target
-        const item2 = button.closest('.item')
+        const item2 = ev.target.closest('.item')
+        const button = item2.querySelector('.edit.button')
         const nameField = item2.querySelector('.itemName')
         
         if(nameField.isContentEditable) {
@@ -65,6 +67,12 @@ class App {
             nameField.focus()
             button.textContent = 'save'
             button.classList.add('success')
+        }
+    }
+
+    saveOnEnter(item, ev) {
+        if(ev.key === 'Enter') {
+            this.editItem(item, ev)
         }
     }
   
