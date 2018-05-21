@@ -15,3 +15,7 @@ body {
 .template {
     display: none;
 }
+
+.actions .button {
+    margin-bottom: 0;
+  }
