@@ -25,7 +25,7 @@ class App {
           .addEventListener('click', this.removeItem.bind(this, item))
       item2
           .querySelector('.fav.button')
-          .addEventListener('click', this.favoriteItem)
+          .addEventListener('click', this.favoriteItem.bind(this, item))
       return item2
     }
 
@@ -38,15 +38,10 @@ class App {
         this.items.splice(i, 1)
     }
 
-    favoriteItem(ev) {
+    favoriteItem(item, ev) {
         const button = ev.target
         const item2 = button.closest('.item')
-        item2.style.backgroundColor = 'Yellow'
-        for(i = 0; i < this.items.length; i++) {
-            if(this.items[i].id === item2.dataset.id) {
-                this.items[i].fav = true
-            }
-        }
+        item.fav = item2.classList.toggle('fav')
     }
   
     handleSubmit(ev) {
@@ -54,6 +49,7 @@ class App {
       const item = {
           id: ++this.max, 
           name: f.itemName.value,
+          fav: false
       }
   
       this.items.unshift(item)
@@ -69,4 +65,3 @@ class App {
     listSelector: '#itemList',
     templateSelector: '.item.template', 
   })
-  

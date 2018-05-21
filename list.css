@@ -18,4 +18,8 @@ body {
 
 .actions .button {
     margin-bottom: 0;
-  }
+}
+
+.item.fav {
+    background-color: yellow;
+}
