@@ -1,5 +1,5 @@
-const app = {
-    init(selectors) {
+class App {
+    constructor (selectors) {
       this.items = []
       this.max = 0
       this.list = document.querySelector(selectors.listSelector)
@@ -11,7 +11,7 @@ const app = {
               ev.preventDefault()
               this.handleSubmit(ev)
           })
-    },
+    }
   
     renderListItem(item) {
       const item2 = this.template.cloneNode(true)
@@ -27,7 +27,7 @@ const app = {
           .querySelector('.fav.button')
           .addEventListener('click', this.favoriteItem)
       return item2
-    }, 
+    }
 
     removeItem(item, ev) {
         const button = ev.target
@@ -36,7 +36,7 @@ const app = {
 
         const i = this.items.indexOf(item)
         this.items.splice(i, 1)
-    },
+    }
 
     favoriteItem(ev) {
         const button = ev.target
@@ -47,7 +47,7 @@ const app = {
                 this.items[i].fav = true
             }
         }
-    },
+    }
   
     handleSubmit(ev) {
       const f = ev.target
@@ -61,12 +61,12 @@ const app = {
       const item2 = this.renderListItem(item)
       this.list.insertBefore(item2, this.list.firstElementChild)
       f.reset()
-    },
+    }
   }
   
-  app.init({
-      formSelector: '#itemForm',
-      listSelector: '#itemList',
-      templateSelector: '.item.template', 
+  const app = new App({
+    formSelector: '#itemForm',
+    listSelector: '#itemList',
+    templateSelector: '.item.template', 
   })
   
