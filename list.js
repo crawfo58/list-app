@@ -26,6 +26,9 @@ class App {
       item2
           .querySelector('.fav.button')
           .addEventListener('click', this.favoriteItem.bind(this, item))
+      item2
+          .querySelector('.edit.button')
+          .addEventListener('click', this.editItem.bind(this, item))
       return item2
     }
 
@@ -42,6 +45,27 @@ class App {
         const button = ev.target
         const item2 = button.closest('.item')
         item.fav = item2.classList.toggle('fav')
+    }
+
+    editItem(item, ev) {
+        const button = ev.target
+        const item2 = button.closest('.item')
+        const nameField = item2.querySelector('.itemName')
+        
+        if(nameField.isContentEditable) {
+            // make it no longer editable
+            nameField.contentEditable = false
+            button.textContent = 'edit'
+            button.classList.remove('success')
+
+            item.name = nameField.textContent
+        } else {
+            //make it editable
+            nameField.contentEditable = true
+            nameField.focus()
+            button.textContent = 'save'
+            button.classList.add('success')
+        }
     }
   
     handleSubmit(ev) {
