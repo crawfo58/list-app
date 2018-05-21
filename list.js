@@ -21,37 +21,26 @@ const app = {
           .querySelector('.itemName')
           .textContent = item.name
       item2
-          .querySelector('button.alert.button')
-          .addEventListener('click', (ev)=> {
-              ev.preventDefault()
-              this.removeListItem(ev)
-          })
+          .querySelector('.remove.button')
+          .addEventListener('click', this.removeItem.bind(this, item))
       item2
-          .querySelector('button.warning.button')
-          .addEventListener('click', (ev)=> {
-              ev.preventDefault()
-              this.favoriteListItem(ev)
-          })
+          .querySelector('.fav.button')
+          .addEventListener('click', this.favoriteItem)
       return item2
     }, 
 
-    removeListItem(ev) {
-        ev.preventDefault()
+    removeItem(item, ev) {
         const button = ev.target
-        const item2 = button.parentNode.parentNode
+        const item2 = button.closest('.item')
         item2.remove()
-        for(i = 0; i < this.items.length; i++) {
-            const index = this.items[i].id.toString()
-            if(item2.dataset.id === index) {
-                this.items.splice(i,1)
-                break
-            }
-        }
+
+        const i = this.items.indexOf(item)
+        this.items.splice(i, 1)
     },
 
-    favoriteListItem(ev) {
+    favoriteItem(ev) {
         const button = ev.target
-        const item2 = button.parentNode.parentNode
+        const item2 = button.closest('.item')
         item2.style.backgroundColor = 'Yellow'
         for(i = 0; i < this.items.length; i++) {
             if(this.items[i].id === item2.dataset.id) {
